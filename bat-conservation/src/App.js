@@ -8,6 +8,7 @@ import News from './pages/News';
 import Shop from './pages/Shop';
 import Safety from './pages/Safety';
 import Navbar from './components/Navbar';
+import './styles/styles.css';
 
 function App() {
     return (
