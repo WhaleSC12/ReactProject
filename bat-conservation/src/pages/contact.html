@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-bar">
+            <div class="logo-container">
+                <img src="https://gallery.yopriceville.com/var/albums/Free-Clipart-Pictures/Halloween-PNG-Pictures/Halloween_Bat_Silhouette_PNG_Clipart.png?m=1634115382" alt="Logo" class="logo">
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="news.html">Bat News</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="safety.html">Bat Safety</a></li>
+                <li><a href="breeds.html">Bat Breeds</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    
+    
+
+    <main class="container contact-container">
+        <!-- Left Image Placeholder -->
+        <div class="image-placeholder">
+            <img src="images/conservation2.jpg" alt="conservation 2" class="contact-image">
+        </div>
+
+        <!-- Contact Information -->
+        <div class="contact-info">
+            <p class="contacttext">
+                Our hotline: <br> (803) 593-9440 <br><br>
+                South Carolina Department of National Resources: <br> (803) 432-444 <br><br>
+                Reach out to us at our email: <br> ConserveBat@outlook.com
+            </p>
+            <p class="locations">
+                We have locations in: <br>
+                - Winchester, Virginia <br>
+                - Memphis, Tennessee <br>
+                - Mexico City, Mexico <br>
+                - Prince Rupert, British Columbia <br>
+                - Halifax, Nova Scotia
+            </p>
+            <img src="images/North-America-Map.png" alt="North America Map" class="map-image">
+        </div>
+
+        <!-- Right Image Placeholder -->
+        <div class="image-placeholder">
+            <img src="images/conservation.jpg" alt="conservation" class="contact-image">
+        </div>
+    </main>
+
+    <main class="container">
+        <h1 class="form-title">Job Application Form</h1>
+        <form action="submit_application.php" method="post" class="job-application-form centered-form">
+            <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required class="centered-input">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required class="centered-input">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required class="centered-input">
+            </div>
+
+            <div class="form-group">
+                <label for="position">Position Applied For:</label>
+                <select id="position" name="position" required class="centered-input">
+                    <option value="Field Researcher">Field Researcher</option>
+                    <option value="Conservation Educator">Conservation Educator</option>
+                    <option value="Volunteer Coordinator">Volunteer Coordinator</option>
+                    <option value="Administrative Assistant">Administrative Assistant</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="experience">Relevant Experience:</label>
+                <textarea id="experience" name="experience" rows="4" required class="centered-input"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="whyJoin">Why Are You Interested in Working with Us?</label>
+                <textarea id="whyJoin" name="whyJoin" rows="4" required class="centered-input"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="availability">Availability (Full-time/Part-time/Volunteer):</label>
+                <select id="availability" name="availability" required class="centered-input">
+                    <option value="Full-time">Full-time</option>
+                    <option value="Part-time">Part-time</option>
+                    <option value="Volunteer">Volunteer</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="resume">Attach Resume (PDF only):</label>
+                <input type="file" id="resume" name="resume" accept=".pdf" required class="centered-input">
+            </div>
+
+            <button type="submit" class="submit-button">Submit Application</button>
+        </form>
+    </main>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById("navLinks");
+            navLinks.classList.toggle("active");
+        }
+    </script>
+        <script src="script.js"></script>
+
+</body>
+</html>

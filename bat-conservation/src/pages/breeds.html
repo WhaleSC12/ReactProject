@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breeds</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-bar">
+            <div class="logo-container">
+                <img src="https://gallery.yopriceville.com/var/albums/Free-Clipart-Pictures/Halloween-PNG-Pictures/Halloween_Bat_Silhouette_PNG_Clipart.png?m=1634115382" alt="Logo" class="logo">
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="news.html">Bat News</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="safety.html">Bat Safety</a></li>
+                <li><a href="breeds.html">Bat Breeds</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    
+
+    <section class="gallery">
+       
+    </section>
+
+    <div id="batModal" class="w3-modal modal">
+        <div class="w3-modal-content w3-animate-top w3-card-4 modal-content">
+            <span class="close-modal w3-button w3-display-topright" onclick="document.getElementById('batModal').style.display='none'">&times;</span>
+            <h2 id="batTitle"></h2>
+            <div id="batDetails"></div>
+        </div>
+    </div>
+    
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById("navLinks");
+            navLinks.classList.toggle("active");
+        }
+    </script>
+        <script src="script.js"></script>
+
+</body>
+</html>

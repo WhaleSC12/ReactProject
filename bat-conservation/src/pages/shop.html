@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-bar">
+            <div class="logo-container">
+                <img src="https://gallery.yopriceville.com/var/albums/Free-Clipart-Pictures/Halloween-PNG-Pictures/Halloween_Bat_Silhouette_PNG_Clipart.png?m=1634115382" alt="Logo" class="logo">
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="news.html">Bat News</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="safety.html">Bat Safety</a></li>
+                <li><a href="breeds.html">Bat Breeds</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    
+
+    <main class="container">
+        <h1 class="shop-heading">Shop Our Products</h1>
+        <section class="shop-gallery">
+            <div class="shop-item" onclick="showCart('Bat T-shirt', '25', 'https://naturetshirts.com/cdn/shop/products/littlebrownbat_1200x1200.png?v=1658922048')">
+                <img src="https://naturetshirts.com/cdn/shop/products/littlebrownbat_1200x1200.png?v=1658922048" alt="Bat T-shirt">
+                <p>Bat T-shirt<br>$25</p>
+            </div>
+
+            <div class="shop-item" onclick="showCart('Bat House', '75', 'https://www.merlintuttle.org/wp-content/uploads/2020/09/US_4_DSC01662-Edit.jpg')">
+                <img src="https://www.merlintuttle.org/wp-content/uploads/2020/09/US_4_DSC01662-Edit.jpg" alt="Bat House">
+                <p>Bat House<br>$75</p>
+            </div>
+
+            <div class="shop-item" onclick="showCart('Bat Plush Toy', '20', 'images/bat-plush.png')">
+                <img src="images/bat-plush.png" alt="Bat Plush Toy">
+                <p>Bat Plush Toy<br>$20</p>
+            </div>
+
+            <div class="shop-item" onclick="showCart('Bat Conservation Mug', '15', 'images/bat-mug.png')">
+                <img src="images/bat-mug.jpg" alt="Bat Conservation Mug">
+                <p>Bat Conservation Mug<br>$15</p>
+            </div>
+
+            <div class="shop-item" onclick="showCart('Bat Poster', '10', 'images/bat-poster.png')">
+                <img src="images/bat-poster.jpg" alt="Bat Poster">
+                <p>Bat Poster<br>$10</p>
+            </div>
+
+            <div class="shop-item" onclick="showCart('Bat Conservation Guidebook', '30', 'images/bat-guidebook.png')">
+                <img src="images/bat-guidebook.jpg" alt="Bat Conservation Guidebook">
+                <p>Bat Conservation Guidebook<br>$30</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for Shopping Cart -->
+    <div id="cartModal" class="w3-modal">
+        <div class="w3-modal-content w3-animate-top w3-card-4">
+            <header class="w3-container w3-teal">
+                <span onclick="document.getElementById('cartModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                <h2 id="itemTitle"></h2>
+            </header>
+            <div class="w3-container" id="cartDetails">
+                <img id="itemImage" src="" alt="" style="width:100%">
+                <p id="itemPrice"></p>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1">
+                <button class="submit-button" onclick="addToCart()">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById("navLinks");
+            navLinks.classList.toggle("active");
+        }
+    </script>
+        <script src="script.js"></script>
+</body>
+</html>
