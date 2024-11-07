@@ -111,6 +111,30 @@ html, body {
 .prev { left: 10px; }
 .next { right: 10px; }
 
+/* Heading and Subheading */
+.heading {
+  text-align: center;
+  font-size: 3em;
+  margin-top: 20px;
+}
+
+.subheading {
+  text-align: center;
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.subheading a {
+  margin: 0 5px;
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.subheading a:hover {
+  text-decoration: underline;
+}
+
 /* Gallery */
 .gallery {
   display: flex;
@@ -220,4 +244,18 @@ html, body {
   color: #666;
   background-color: #333;
   color: white;
+}
+
+.footer-text-header {
+  font-size: 24px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.footer-text {
+  font-size: 1em;
+  color: #666;
+  margin: 20px auto;
+  max-width: 75%;
+  text-align: center;
 }
