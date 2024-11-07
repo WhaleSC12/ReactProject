@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import '../styles/styles.css';
 import tshirtImage from '../assets/tshirt.png';
 import houseImage from '../assets/bathouse.jpg';
-import plushImage from '../assets/plush.jpg';
-import mugImage from '../assets/batmug.jpg';
-import posterImage from '../assets/poster.jpg';
+import plushImage from '../assets/bat-plush.png';
+import mugImage from '../assets/bat-mug.jpg';
+import posterImage from '../assets/bat-poster.jpg';
 import guidebookImage from '../assets/bat-guidebook.jpg'
 
 function Shop() {
