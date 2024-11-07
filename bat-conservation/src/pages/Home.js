@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import '../styles/styles.css';
 
-// Import images directly
+// Define images array with paths from the public folder
 const images = [
   `${process.env.PUBLIC_URL}/assets/batanatomy.png`,
   `${process.env.PUBLIC_URL}/assets/canarylongearedbat.png`,
@@ -14,9 +14,7 @@ const images = [
 function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Store imported images in an array
-  const images = [batanatomy, canarylongearedbat, floridabonnetedbat, greaterbulldogbat, flyingfoxbat];
-
+  // Function to change slides
   const changeSlide = (direction) => {
     setCurrentSlide((prevSlide) =>
       (prevSlide + direction + images.length) % images.length
@@ -26,7 +24,8 @@ function Home() {
   return (
     <main className="container">
       <h1 className="heading">North American Bat Conservation Society</h1>
-      <p className="subheading">New: 
+      <p className="subheading">
+        New: 
         <a href="https://whalesc12.github.io/ReactProject/#/news">Potential new cure for white-nose syndrome?</a> | 
         <a href="https://whalesc12.github.io/ReactProject/#/shop">New t-shirt!</a> | 
         <a href="https://whalesc12.github.io/ReactProject/#/breeds">New breed!</a>

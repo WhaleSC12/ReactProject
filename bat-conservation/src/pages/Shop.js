@@ -1,6 +1,7 @@
 // src/pages/Shop.js
 import React, { useState } from 'react';
 import '../styles/styles.css';
+import ShopItem from './ShopItem'; // Import ShopItem component
 
 function Shop() {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -12,19 +13,14 @@ function Shop() {
     { id: 4, name: 'Bat Mug', price: '$15', img: `${process.env.PUBLIC_URL}/assets/bat-mug.jpg` },
     { id: 5, name: 'Bat Poster', price: '$10', img: `${process.env.PUBLIC_URL}/assets/bat-poster.jpg` },
     { id: 6, name: 'Bat Guidebook', price: '$20', img: `${process.env.PUBLIC_URL}/assets/bat-guidebook.jpg` }
-];
-
+  ];
 
   return (
     <div className="shop-container">
       <h1 className="shop-heading">Shop</h1>
       <div className="shop-grid">
         {items.map((item) => (
-          <div key={item.id} className="shop-item" onClick={() => setSelectedItem(item)}>
-            <img src={item.img} alt={item.name} />
-            <p>{item.name}</p>
-            <p>{item.price}</p>
-          </div>
+          <ShopItem key={item.id} item={item} onClick={setSelectedItem} />
         ))}
       </div>
 

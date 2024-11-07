@@ -29,7 +29,7 @@ function Breeds() {
         {bats.map((bat) => (
           <div key={bat._id} className="breeds-item" onClick={() => handleOpenModal(bat)}>
             {/* Use the public path to access images */}
-            <img src={`${process.env.PUBLIC_URL}/assets${bat.img_name}`} alt={bat.name} />
+            <img src={`${process.env.PUBLIC_URL}/assets/${bat.img_name}`} alt={bat.name} />
             <p>{bat.name}</p>
           </div>
         ))}
@@ -40,7 +40,7 @@ function Breeds() {
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="close-button" onClick={handleCloseModal}>X</button>
             <h2>{selectedBat.name}</h2>
-            <img src={`${process.env.PUBLIC_URL}/assets${selectedBat.img_name}`} alt={selectedBat.name} />
+            <img src={`${process.env.PUBLIC_URL}/assets/${selectedBat.img_name}`} alt={selectedBat.name} />
             <p><strong>Conservation Status:</strong> {selectedBat.conservationStatus}</p>
             <p><strong>Notable Features:</strong> {selectedBat.notable}</p>
             <p><strong>Countries Found In:</strong> {selectedBat.countries.join(', ')}</p>
