@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 import '../styles/styles.css';
 
 // Importing images directly
-import BigBrownBat from '../assets/big_brown_bat.jpg';
-import CanaryLongEaredBat from '../assets/canarylongearedbat.jpg';
+import BigBrownBat from '../assets/bigbrownbat.jpg';
+import CanaryLongEaredBat from '../assets/canarylongearedbat.png';
 import EasternRedBat from '../assets/easternredbat.jpg';
 import FloridaBonnetedBat from '../assets/floridabonnetedbat.jpg';
 import FlyingFoxBat from '../assets/flyingfoxbat.jpg';
-import GreaterBulldogBat from '../assets/greaterbulldogbat.jpg';
+import GreaterBulldogBat from '../assets/greaterbulldogbat.png';
 import HoaryBat from '../assets/hoarybat.jpg';
 import MexicanFreeTailedBat from '../assets/mexicanfreetailedbat.jpg';
 import VampireBat from '../assets/vampirebat.jpg';
