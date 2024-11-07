@@ -3,16 +3,16 @@ import React, { useState } from 'react';
 import '../styles/styles.css';
 
 // Importing images directly
-import BigBrownBat from '../assets/big_brown_bat.jpg';
-import CanaryLongEaredBat from '../assets/canary_long_eared_bat.jpg';
-import EasternRedBat from '../assets/eastern_red_bat.jpg';
-import FloridaBonnetedBat from '../assets/florida_bonneted_bat.jpg';
-import FlyingFoxBat from '../assets/flying_fox_bat.jpg';
-import GreaterBulldogBat from '../assets/greater_bulldog_bat.jpg';
-import HoaryBat from '../assets/hoary_bat.jpg';
-import MexicanFreeTailedBat from '../assets/mexican_free_tailed_bat.jpg';
-import VampireBat from '../assets/vampire_bat.jpg';
-import YellowBat from '../assets/yellow_bat.jpg';
+import BigBrownBat from '../assets/bigbrownbat.jpg';
+import CanaryLongEaredBat from '../assets/canarylongearedbat.png';
+import EasternRedBat from '../assets/easternredbat.jpg';
+import FloridaBonnetedBat from '../assets/floridabonnetedbat.jpg';
+import FlyingFoxBat from '../assets/flyingfoxbat.jpg';
+import GreaterBulldogBat from '../assets/greaterbulldogbat.png';
+import HoaryBat from '../assets/hoarybat.jpg';
+import MexicanFreeTailedBat from '../assets/mexicanfreetailedbat.jpg';
+import VampireBat from '../assets/vampirebat.jpg';
+import YellowBat from '../assets/yellowbat.jpg';
 
 function Breeds() {
   // Hardcoded bat data with additional details
