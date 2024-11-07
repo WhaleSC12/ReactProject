@@ -25,9 +25,9 @@ function Home() {
     <main className="container">
       <h1 className="heading">North American Bat Conservation Society</h1>
       <p className="subheading">New: 
-        <a href="/news">Potential new cure for white-nose syndrome?</a> | 
-        <a href="/shop">New t-shirt!</a> | 
-        <a href="/breeds">New breed!</a>
+        <a href="https://whalesc12.github.io/ReactProject/#/news">Potential new cure for white-nose syndrome?</a> | 
+        <a href="https://whalesc12.github.io/ReactProject/#/shop">New t-shirt!</a> | 
+        <a href="https://whalesc12.github.io/ReactProject/#/breeds">New breed!</a>
       </p>
       
       <section className="carousel">
