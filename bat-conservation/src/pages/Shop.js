@@ -1,6 +1,6 @@
 // Shop.js
 import React, { useState } from 'react';
-import './styles.css';
+import '../styles/styles.css';
 
 function Shop() {
   const [selectedItem, setSelectedItem] = useState(null);

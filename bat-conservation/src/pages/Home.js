@@ -1,6 +1,6 @@
 // src/pages/Home.js
 import React, { useState } from 'react';
-import './styles.css';
+import '../styles/styles.css';
 
 function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);

@@ -1,6 +1,6 @@
 // src/pages/Breeds.js
 import React, { useState, useEffect } from 'react';
-import './styles.css';
+import '../styles/styles.css';
 
 function Breeds() {
   const [bats, setBats] = useState([]);
