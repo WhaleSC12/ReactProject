@@ -26,7 +26,7 @@ function Breeds() {
       </section>
 
       {selectedBat && (
-        <div className="modal" onClick={() => setSelectedBat(null)} style={{ display: 'flex' }}>
+        <div className="modal" onClick={() => setSelectedBat(null)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <span className="close-modal" onClick={() => setSelectedBat(null)}>&times;</span>
             <h2>{selectedBat.name}</h2>

@@ -1,74 +1,46 @@
+// src/pages/Shop.js
 import React, { useState } from 'react';
 import '../styles/styles.css';
+import tshirtImage from '../assets/images/tshirt.jpg';
+import houseImage from '../assets/images/bathouse.jpg';
+import plushImage from '../assets/images/plush.jpg';
+import mugImage from '../assets/images/batmug.jpg';
+import posterImage from '../assets/images/poster.jpg';
+import guidebookImage from '../assets/images/bat-guidebook.jpg'
 
 function Shop() {
   const [selectedItem, setSelectedItem] = useState(null);
-  const [modalVisible, setModalVisible] = useState(false);
 
   const items = [
-    {
-      title: 'Bat T-shirt',
-      price: '25',
-      imageUrl: 'https://naturetshirts.com/cdn/shop/products/littlebrownbat_1200x1200.png?v=1658922048',
-    },
-    {
-      title: 'Bat House',
-      price: '75',
-      imageUrl: 'https://www.merlintuttle.org/wp-content/uploads/2020/09/US_4_DSC01662-Edit.jpg',
-    },
-    {
-      title: 'Bat Plush Toy',
-      price: '20',
-      imageUrl: '/assets/bat-plush.png',
-    },
-    {
-      title: 'Bat Conservation Mug',
-      price: '15',
-      imageUrl: '/assets/bat-mug.jpg',
-    },
-    {
-      title: 'Bat Poster',
-      price: '10',
-      imageUrl: '/assets/bat-poster.jpg',
-    },
-    {
-      title: 'Bat Conservation Guidebook',
-      price: '30',
-      imageUrl: '/assets/bat-guidebook.jpg',
-    },
-  ];
-
-  const showCart = (item) => {
-    setSelectedItem(item);
-    setModalVisible(true);
-  };
-
-  const closeModal = () => {
-    setModalVisible(false);
-  };
+    { id: 1, name: 'Bat T-shirt', price: '$25', img: tshirtImage },
+    { id: 2, name: 'Bat House', price: '$75', img: houseImage },
+    { id: 3, name: 'Bat Plush Toy', price: '$20', img: plushImage },
+    { id: 4, name: 'Bat Mug', price: '$15', img: mugImage },
+    { id: 5, name: 'Bat Poster', price: '$10', img: posterImage },
+    { id: 6, name: 'Bat guidebook', price: '20', img: guidebookImage },
+   ];
 
   return (
-    <div className="container">
-      <h1 className="shop-heading">Shop Our Products</h1>
-      <section className="shop-gallery">
-        {items.map((item, index) => (
-          <div key={index} className="shop-item" onClick={() => showCart(item)}>
-            <img src={item.imageUrl} alt={item.title} />
-            <p>{item.title}<br />${item.price}</p>
+    <div className="shop-container">
+      <h1 className="shop-heading">Shop</h1>
+      <div className="shop-grid">
+        {items.map((item) => (
+          <div key={item.id} className="shop-item" onClick={() => setSelectedItem(item)}>
+            <img src={item.img} alt={item.name} />
+            <p>{item.name}</p>
+            <p>{item.price}</p>
           </div>
         ))}
-      </section>
+      </div>
 
-      {modalVisible && (
-        <div className="modal" onClick={closeModal} style={{ display: 'flex' }}>
+      {selectedItem && (
+        <div className="modal" onClick={() => setSelectedItem(null)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <span className="close-modal" onClick={closeModal}>&times;</span>
-            <h2>{selectedItem.title}</h2>
-            <img src={selectedItem.imageUrl} alt={selectedItem.title} style={{ width: '100%' }} />
-            <p>Price: ${selectedItem.price}</p>
-            <label htmlFor="quantity">Quantity:</label>
-            <input type="number" id="quantity" name="quantity" min="1" defaultValue="1" />
-            <button className="submit-button">Add to Cart</button>
+            <span className="close-modal" onClick={() => setSelectedItem(null)}>&times;</span>
+            <h2>{selectedItem.name}</h2>
+            <img src={selectedItem.img} alt={selectedItem.name} style={{ width: '100%' }} />
+            <p>Price: {selectedItem.price}</p>
+            <button className="add-to-cart-button">Add to Cart</button>
           </div>
         </div>
       )}

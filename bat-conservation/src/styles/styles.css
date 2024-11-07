@@ -428,6 +428,30 @@ html, body {
 
 /* Bat Safety Page */
 
+.safety-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.safety-card {
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.safety-card img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+
+
 .bat-safety-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
