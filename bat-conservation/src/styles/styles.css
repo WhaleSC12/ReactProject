@@ -163,10 +163,73 @@ html, body {
 /* Contact and Form Styling */
 .contact-container {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   margin: 20px auto;
-  max-width: 1200px;
+  max-width: 800px;
+  text-align: center;
+}
+.contact-content {
+  margin-bottom: 20px;
+}
+
+.contact-image {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+.contact-content h2,
+.contact-content p {
+  margin: 5px 0;
+  font-size: 1.2em;
+  color: #555;
+}
+.contact-content h3 {
+  margin-top: 15px;
+  font-size: 1.1em;
+  color: #666;
+}
+.contact-form {
+  width: 100%;
+  max-width: 500px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
 }
 
 .contact-info img {
