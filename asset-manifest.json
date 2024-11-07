@@ -1,13 +1,18 @@
 {
   "files": {
     "main.css": "/ReactProject/static/css/main.56a2e586.css",
-    "main.js": "/ReactProject/static/js/main.e422ce43.js",
+    "main.js": "/ReactProject/static/js/main.33d6bd46.js",
+    "static/media/greaterbulldogbat.png": "/ReactProject/static/media/greaterbulldogbat.60430ae0947dfba574ae.png",
+    "static/media/flyingfoxbat.jpg": "/ReactProject/static/media/flyingfoxbat.b2d18f300660004121ba.jpg",
+    "static/media/canarylongearedbat.png": "/ReactProject/static/media/canarylongearedbat.ecd19659a5251b2cb2c3.png",
+    "static/media/batanatomy.png": "/ReactProject/static/media/batanatomy.3c3e5abe781fe6fae8b7.png",
+    "static/media/floridabonnetedbat.jpg": "/ReactProject/static/media/floridabonnetedbat.0079ca9a38489a43ecc5.jpg",
     "index.html": "/ReactProject/index.html",
     "main.56a2e586.css.map": "/ReactProject/static/css/main.56a2e586.css.map",
-    "main.e422ce43.js.map": "/ReactProject/static/js/main.e422ce43.js.map"
+    "main.33d6bd46.js.map": "/ReactProject/static/js/main.33d6bd46.js.map"
   },
   "entrypoints": [
     "static/css/main.56a2e586.css",
-    "static/js/main.e422ce43.js"
+    "static/js/main.33d6bd46.js"
   ]
 }
