@@ -1,7 +1,7 @@
 // src/pages/Shop.js
 import React, { useState } from 'react';
 import '../styles/styles.css';
-import tshirtImage from '../assets/images/tshirt.jpg';
+import tshirtImage from '../assets/images/tshirt.png';
 import houseImage from '../assets/images/bathouse.jpg';
 import plushImage from '../assets/images/plush.jpg';
 import mugImage from '../assets/images/batmug.jpg';
