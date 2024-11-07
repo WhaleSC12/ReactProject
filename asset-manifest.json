@@ -1,7 +1,8 @@
 {
   "files": {
     "main.css": "/ReactProject/static/css/main.9311e998.css",
-    "main.js": "/ReactProject/static/js/main.89f8f6d0.js",
+    "main.js": "/ReactProject/static/js/main.2939dfe0.js",
+    "static/media/North-America-Map.png": "/ReactProject/static/media/North-America-Map.c5de2a832dbf7c4df689.png",
     "static/media/greaterbulldogbat.png": "/ReactProject/static/media/greaterbulldogbat.60430ae0947dfba574ae.png",
     "static/media/bathouse.jpg": "/ReactProject/static/media/bathouse.b665410733786e67f068.jpg",
     "static/media/bat-plush.png": "/ReactProject/static/media/bat-plush.9e76fd914b7d20cf2299.png",
@@ -14,6 +15,7 @@
     "static/media/bite.jpg": "/ReactProject/static/media/bite.4a8b9e29c673513c73cb.jpg",
     "static/media/yellowbat.jpg": "/ReactProject/static/media/yellowbat.da49ca855773f2cdbe72.jpg",
     "static/media/conservation2.jpg": "/ReactProject/static/media/conservation2.c78ed6fb5a15cb07be7c.jpg",
+    "static/media/conservation.jpg": "/ReactProject/static/media/conservation.7ae92fb0f6a46a137adb.jpg",
     "static/media/bigbrownbat.jpg": "/ReactProject/static/media/bigbrownbat.6920ef21110a4ac7ecf9.jpg",
     "static/media/mexicanfreetailedbat.jpg": "/ReactProject/static/media/mexicanfreetailedbat.01e7c9c1b7b77bec68ea.jpg",
     "static/media/bat-guidebook.jpg": "/ReactProject/static/media/bat-guidebook.d87a84f0d3b6006ccc7f.jpg",
@@ -28,10 +30,10 @@
     "static/media/windmill.jpg": "/ReactProject/static/media/windmill.93125d1fead991565333.jpg",
     "index.html": "/ReactProject/index.html",
     "main.9311e998.css.map": "/ReactProject/static/css/main.9311e998.css.map",
-    "main.89f8f6d0.js.map": "/ReactProject/static/js/main.89f8f6d0.js.map"
+    "main.2939dfe0.js.map": "/ReactProject/static/js/main.2939dfe0.js.map"
   },
   "entrypoints": [
     "static/css/main.9311e998.css",
-    "static/js/main.89f8f6d0.js"
+    "static/js/main.2939dfe0.js"
   ]
 }
