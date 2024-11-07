@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import batData from '../data/bats.json';
-import './styles.css';
+import '../styles/styles.css';
 
 function Breeds() {
   const [bats, setBats] = useState([]);
