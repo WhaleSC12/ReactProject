@@ -391,3 +391,29 @@ html, body {
   border-radius: 10px;
   margin-bottom: 10px;
 }
+
+/* Bat Safety Page */
+
+.bat-safety-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 20px;
+}
+
+.safety-section {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.safety-image {
+  text-align: center;
+}
+
+.safety-image img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}

@@ -1,8 +1,8 @@
 // src/pages/News.js
 import React from 'react';
-import whiteNoseImg from '../assets/images/whitenose.jpg';
-import windmillImg from '../assets/images/windmill.jpg';
-import batRescueImg from '../assets/images/batrescue.jpeg';
+import whiteNoseImg from '../assets/whitenose.jpg';
+import windmillImg from '../assets/windmill.jpg';
+import batRescueImg from '../assets/batrescue.jpeg';
 import '../styles/styles.css';
 
 export default function News() {
