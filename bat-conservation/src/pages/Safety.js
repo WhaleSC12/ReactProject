@@ -1,8 +1,5 @@
 // src/pages/Safety.js
 import React from 'react';
-import safetyImage1 from '../assets/safety.jpg';
-import safetyImage2 from '../assets/attic.jpg';
-import safetyImage3 from '../assets/bite.jpg';
 
 function Safety() {
   return (
@@ -17,7 +14,7 @@ function Safety() {
 
       <div className="safety-image">
         <p><strong>How to Handle a Bat Safely</strong></p>
-        <img src={safetyImage1} alt="Handling a Bat" />
+        <img src={`${process.env.PUBLIC_URL}/assets/safety.jpg`} alt="Handling a Bat" />
       </div>
 
       <section className="safety-section">
@@ -27,7 +24,7 @@ function Safety() {
 
       <div className="safety-image">
         <p><strong>Releasing a Bat Safely</strong></p>
-        <img src={safetyImage2} alt="Releasing a Bat" />
+        <img src={`${process.env.PUBLIC_URL}/assets/attic.jpg`} alt="Releasing a Bat" />
       </div>
 
       <section className="safety-section">
@@ -37,7 +34,7 @@ function Safety() {
 
       <div className="safety-image">
         <p><strong>Treating a Bat Bite</strong></p>
-        <img src={safetyImage3} alt="Treating a Bat Bite" />
+        <img src={`${process.env.PUBLIC_URL}/assets/bite.jpg`} alt="Treating a Bat Bite" />
       </div>
     </div>
   );

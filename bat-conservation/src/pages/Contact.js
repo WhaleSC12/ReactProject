@@ -6,7 +6,7 @@ function Contact() {
   return (
     <main className="container contact-container">
       <div className="contact-content">
-        <img src={require('../assets/conservation2.jpg')} alt="Conservation 2" className="contact-image" />
+        <img src={`${process.env.PUBLIC_URL}/assets/conservation2.jpg`} alt="Conservation 2" className="contact-image" />
         <h2>Our hotline:</h2>
         <p>(803) 593-9440</p>
         <h3>South Carolina Department of National Resources:</h3>

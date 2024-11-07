@@ -1,24 +1,19 @@
 // src/pages/Shop.js
 import React, { useState } from 'react';
 import '../styles/styles.css';
-import tshirtImage from '../assets/tshirt.png';
-import houseImage from '../assets/bathouse.jpg';
-import plushImage from '../assets/bat-plush.png';
-import mugImage from '../assets/bat-mug.jpg';
-import posterImage from '../assets/bat-poster.jpg';
-import guidebookImage from '../assets/bat-guidebook.jpg'
 
 function Shop() {
   const [selectedItem, setSelectedItem] = useState(null);
 
   const items = [
-    { id: 1, name: 'Bat T-shirt', price: '$25', img: tshirtImage },
-    { id: 2, name: 'Bat House', price: '$75', img: houseImage },
-    { id: 3, name: 'Bat Plush Toy', price: '$20', img: plushImage },
-    { id: 4, name: 'Bat Mug', price: '$15', img: mugImage },
-    { id: 5, name: 'Bat Poster', price: '$10', img: posterImage },
-    { id: 6, name: 'Bat guidebook', price: '20', img: guidebookImage },
-   ];
+    { id: 1, name: 'Bat T-shirt', price: '$25', img: `${process.env.PUBLIC_URL}/assets/tshirt.png` },
+    { id: 2, name: 'Bat House', price: '$75', img: `${process.env.PUBLIC_URL}/assets/bathouse.jpg` },
+    { id: 3, name: 'Bat Plush Toy', price: '$20', img: `${process.env.PUBLIC_URL}/assets/bat-plush.png` },
+    { id: 4, name: 'Bat Mug', price: '$15', img: `${process.env.PUBLIC_URL}/assets/bat-mug.jpg` },
+    { id: 5, name: 'Bat Poster', price: '$10', img: `${process.env.PUBLIC_URL}/assets/bat-poster.jpg` },
+    { id: 6, name: 'Bat Guidebook', price: '$20', img: `${process.env.PUBLIC_URL}/assets/bat-guidebook.jpg` }
+];
+
 
   return (
     <div className="shop-container">

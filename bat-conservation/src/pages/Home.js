@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import '../styles/styles.css';
 
 // Import images directly
-import batanatomy from '../assets/batanatomy.png';
-import canarylongearedbat from '../assets/canarylongearedbat.png';
-import floridabonnetedbat from '../assets/floridabonnetedbat.jpg';
-import greaterbulldogbat from '../assets/greaterbulldogbat.png';
-import flyingfoxbat from '../assets/flyingfoxbat.jpg';
+const images = [
+  `${process.env.PUBLIC_URL}/assets/batanatomy.png`,
+  `${process.env.PUBLIC_URL}/assets/canarylongearedbat.png`,
+  `${process.env.PUBLIC_URL}/assets/floridabonnetedbat.jpg`,
+  `${process.env.PUBLIC_URL}/assets/greaterbulldogbat.png`,
+  `${process.env.PUBLIC_URL}/assets/flyingfoxbat.jpg`
+];
 
 function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);

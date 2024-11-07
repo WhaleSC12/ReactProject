@@ -1,8 +1,6 @@
 // src/pages/News.js
 import React from 'react';
-import whiteNoseImg from '../assets/whitenose.jpg';
-import windmillImg from '../assets/windmill.jpg';
-import batRescueImg from '../assets/batrescue.jpeg';
+
 import '../styles/styles.css';
 
 export default function News() {
@@ -11,7 +9,7 @@ export default function News() {
             <h1 className="news-heading">Bat News</h1>
             <section className="news-gallery">
                 <div className="news-item">
-                    <img src={whiteNoseImg} alt="White-Nose Syndrome" />
+                    <img src={`${process.env.PUBLIC_URL}/assets/whitenose.jpg`} alt="White-Nose Syndrome" />
                     <div className="news-content">
                         <h2>Potential New Cure for White-Nose Syndrome?</h2>
                         <p className="author">By Ava Sain</p>
@@ -20,7 +18,7 @@ export default function News() {
                 </div>
 
                 <div className="news-item">
-                    <img src={windmillImg} alt="Bat Deaths by Windmills" />
+                    <img src={`${process.env.PUBLIC_URL}/assets/windmill.jpg`} alt="Bat Deaths by Windmills" />
                     <div className="news-content">
                         <h2>Latest Report on Bat Deaths by Windmills</h2>
                         <p className="author">By John Wilfong</p>
@@ -29,7 +27,7 @@ export default function News() {
                 </div>
 
                 <div className="news-item">
-                    <img src={batRescueImg} alt="Bat Rehabilitation" />
+                    <img src={`${process.env.PUBLIC_URL}/assets/batrescue.jpeg`} alt="Bat Rehabilitation" />
                     <div className="news-content">
                         <h2>New Efforts in Bat Rehabilitation Centers</h2>
                         <p className="author">By Moses Young</p>
