@@ -25,7 +25,7 @@ function Breeds() {
       <div className="breeds-gallery">
         {bats.map((bat) => (
           <div key={bat._id} className="breeds-item" onClick={() => handleOpenModal(bat)}>
-            <img src={require(`../assets/${bat.img_name.slice(8)}`).default} alt={bat.name} />
+            <img src={require(`../assets/${bat.img_name.replace('/assets/', '')}`).default} alt={bat.name} />
             <p>{bat.name}</p>
           </div>
         ))}
@@ -36,7 +36,7 @@ function Breeds() {
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="close-button" onClick={handleCloseModal}>X</button>
             <h2>{selectedBat.name}</h2>
-            <img src={require(`../assets/${selectedBat.img_name.slice(8)}`).default} alt={selectedBat.name} />
+            <img src={require(`../assets/${selectedBat.img_name.replace('/assets/', '')}`).default} alt={selectedBat.name} />
             <p><strong>Conservation Status:</strong> {selectedBat.conservationStatus}</p>
             <p><strong>Notable Features:</strong> {selectedBat.notable}</p>
             <p><strong>Countries Found In:</strong> {selectedBat.countries.join(', ')}</p>
@@ -48,8 +48,6 @@ function Breeds() {
 }
 
 export default Breeds;
-
-
 
 /*
 // src/pages/Breeds.js
