@@ -1,5 +1,6 @@
 // src/components/Navbar.js
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,12 +24,12 @@ function Navbar() {
         </div>
         
         <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`} id="navLinks">
-          <li><a href="/">Home</a></li>
-          <li><a href="/contact">Contact</a></li>
-          <li><a href="/news">Bat News</a></li>
-          <li><a href="/shop">Shop</a></li>
-          <li><a href="/safety">Bat Safety</a></li>
-          <li><a href="/breeds">Bat Breeds</a></li>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
+          <li><Link to="/news">Bat News</Link></li>
+          <li><Link to="/shop">Shop</Link></li>
+          <li><Link to="/safety">Bat Safety</Link></li>
+          <li><Link to="/breeds">Bat Breeds</Link></li>
         </ul>
       </nav>
     </header>
