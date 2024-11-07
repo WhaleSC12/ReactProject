@@ -1,39 +1,13 @@
 {
   "files": {
     "main.css": "/ReactProject/static/css/main.9311e998.css",
-    "main.js": "/ReactProject/static/js/main.aec9395c.js",
-    "static/media/North-America-Map.png": "/ReactProject/static/media/North-America-Map.c5de2a832dbf7c4df689.png",
-    "static/media/greaterbulldogbat.png": "/ReactProject/static/media/greaterbulldogbat.60430ae0947dfba574ae.png",
-    "static/media/bathouse.jpg": "/ReactProject/static/media/bathouse.b665410733786e67f068.jpg",
-    "static/media/bat-plush.png": "/ReactProject/static/media/bat-plush.9e76fd914b7d20cf2299.png",
-    "static/media/flyingfoxbat.jpg": "/ReactProject/static/media/flyingfoxbat.b2d18f300660004121ba.jpg",
-    "static/media/bat-mug.jpg": "/ReactProject/static/media/bat-mug.ae3e64a6f81536e67d20.jpg",
-    "static/media/tshirt.png": "/ReactProject/static/media/tshirt.bf2e8ef034a926d44731.png",
-    "static/media/vampirebat.jpg": "/ReactProject/static/media/vampirebat.323763fe5cb568d6d913.jpg",
-    "static/media/canarylongearedbat.png": "/ReactProject/static/media/canarylongearedbat.ecd19659a5251b2cb2c3.png",
-    "static/media/bat-poster.jpg": "/ReactProject/static/media/bat-poster.d0ffe6c94ed4a2c40ed3.jpg",
-    "static/media/bite.jpg": "/ReactProject/static/media/bite.4a8b9e29c673513c73cb.jpg",
-    "static/media/yellowbat.jpg": "/ReactProject/static/media/yellowbat.da49ca855773f2cdbe72.jpg",
-    "static/media/conservation2.jpg": "/ReactProject/static/media/conservation2.c78ed6fb5a15cb07be7c.jpg",
-    "static/media/conservation.jpg": "/ReactProject/static/media/conservation.7ae92fb0f6a46a137adb.jpg",
-    "static/media/bigbrownbat.jpg": "/ReactProject/static/media/bigbrownbat.6920ef21110a4ac7ecf9.jpg",
-    "static/media/mexicanfreetailedbat.jpg": "/ReactProject/static/media/mexicanfreetailedbat.01e7c9c1b7b77bec68ea.jpg",
-    "static/media/bat-guidebook.jpg": "/ReactProject/static/media/bat-guidebook.d87a84f0d3b6006ccc7f.jpg",
-    "static/media/batanatomy.png": "/ReactProject/static/media/batanatomy.3c3e5abe781fe6fae8b7.png",
-    "static/media/easternredbat.jpg": "/ReactProject/static/media/easternredbat.4a42000803affc046e87.jpg",
-    "static/media/attic.jpg": "/ReactProject/static/media/attic.b55eaf3ad0f3ce11c21a.jpg",
-    "static/media/batrescue.jpeg": "/ReactProject/static/media/batrescue.61aad78ddecc640b721b.jpeg",
-    "static/media/hoarybat.jpg": "/ReactProject/static/media/hoarybat.18de39f5e12bdf0601cb.jpg",
-    "static/media/floridabonnetedbat.jpg": "/ReactProject/static/media/floridabonnetedbat.0079ca9a38489a43ecc5.jpg",
-    "static/media/safety.jpg": "/ReactProject/static/media/safety.a15c2af0a8188ee22f84.jpg",
-    "static/media/whitenose.jpg": "/ReactProject/static/media/whitenose.076b9828b749359f06f2.jpg",
-    "static/media/windmill.jpg": "/ReactProject/static/media/windmill.93125d1fead991565333.jpg",
+    "main.js": "/ReactProject/static/js/main.0e6773bc.js",
     "index.html": "/ReactProject/index.html",
     "main.9311e998.css.map": "/ReactProject/static/css/main.9311e998.css.map",
-    "main.aec9395c.js.map": "/ReactProject/static/js/main.aec9395c.js.map"
+    "main.0e6773bc.js.map": "/ReactProject/static/js/main.0e6773bc.js.map"
   },
   "entrypoints": [
     "static/css/main.9311e998.css",
-    "static/js/main.aec9395c.js"
+    "static/js/main.0e6773bc.js"
   ]
 }
