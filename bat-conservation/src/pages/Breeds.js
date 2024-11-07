@@ -15,10 +15,10 @@ function Breeds() {
   };
 
   return (
-    <div className="breeds-gallery">
+    <div className="breeds-gallery" style={{ paddingTop: '20px' }}>
       {batData.map((bat) => (
         <div key={bat._id} className="breeds-item" onClick={() => handleOpenModal(bat)}>
-          <img src={require(`../assets${bat.img_name}`).default} alt={bat.name} />
+          <img src={process.env.PUBLIC_URL + bat.img_name} alt={bat.name} />
           <p>{bat.name}</p>
         </div>
       ))}
@@ -28,7 +28,7 @@ function Breeds() {
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="close-button" onClick={handleCloseModal}>X</button>
             <h2>{selectedBat.name}</h2>
-            <img src={require(`../assets${selectedBat.img_name}`).default} alt={selectedBat.name} />
+            <img src={process.env.PUBLIC_URL + selectedBat.img_name} alt={selectedBat.name} />
             <p><strong>Conservation Status:</strong> {selectedBat.conservationStatus}</p>
             <p><strong>Notable Features:</strong> {selectedBat.notable}</p>
             <p><strong>Countries Found In:</strong> {selectedBat.countries.join(', ')}</p>
@@ -40,7 +40,6 @@ function Breeds() {
 }
 
 export default Breeds;
-
 
 
 
