@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/ReactProject/static/css/main.5bc99d84.css",
-    "main.js": "/ReactProject/static/js/main.f1497b46.js",
+    "main.css": "/ReactProject/static/css/main.62532263.css",
+    "main.js": "/ReactProject/static/js/main.bf9efcf0.js",
     "static/media/greaterbulldogbat.png": "/ReactProject/static/media/greaterbulldogbat.60430ae0947dfba574ae.png",
     "static/media/flyingfoxbat.jpg": "/ReactProject/static/media/flyingfoxbat.b2d18f300660004121ba.jpg",
     "static/media/canarylongearedbat.png": "/ReactProject/static/media/canarylongearedbat.ecd19659a5251b2cb2c3.png",
@@ -15,11 +15,11 @@
     "static/media/whitenose.jpg": "/ReactProject/static/media/whitenose.076b9828b749359f06f2.jpg",
     "static/media/windmill.jpg": "/ReactProject/static/media/windmill.93125d1fead991565333.jpg",
     "index.html": "/ReactProject/index.html",
-    "main.5bc99d84.css.map": "/ReactProject/static/css/main.5bc99d84.css.map",
-    "main.f1497b46.js.map": "/ReactProject/static/js/main.f1497b46.js.map"
+    "main.62532263.css.map": "/ReactProject/static/css/main.62532263.css.map",
+    "main.bf9efcf0.js.map": "/ReactProject/static/js/main.bf9efcf0.js.map"
   },
   "entrypoints": [
-    "static/css/main.5bc99d84.css",
-    "static/js/main.f1497b46.js"
+    "static/css/main.62532263.css",
+    "static/js/main.bf9efcf0.js"
   ]
 }
