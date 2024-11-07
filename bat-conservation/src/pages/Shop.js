@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import '../styles/styles.css';
 
 function Shop() {
   const [selectedItem, setSelectedItem] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
+
   const items = [
     {
       title: 'Bat T-shirt',
@@ -17,22 +19,22 @@ function Shop() {
     {
       title: 'Bat Plush Toy',
       price: '20',
-      imageUrl: '/images/bat-plush.png',
+      imageUrl: '/assets/bat-plush.png',
     },
     {
       title: 'Bat Conservation Mug',
       price: '15',
-      imageUrl: '/images/bat-mug.jpg',
+      imageUrl: '/assets/bat-mug.jpg',
     },
     {
       title: 'Bat Poster',
       price: '10',
-      imageUrl: '/images/bat-poster.jpg',
+      imageUrl: '/assets/bat-poster.jpg',
     },
     {
       title: 'Bat Conservation Guidebook',
       price: '30',
-      imageUrl: '/images/bat-guidebook.jpg',
+      imageUrl: '/assets/bat-guidebook.jpg',
     },
   ];
 
@@ -58,7 +60,7 @@ function Shop() {
       </section>
 
       {modalVisible && (
-        <div className="modal" onClick={closeModal}>
+        <div className="modal" onClick={closeModal} style={{ display: 'flex' }}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <span className="close-modal" onClick={closeModal}>&times;</span>
             <h2>{selectedItem.title}</h2>
