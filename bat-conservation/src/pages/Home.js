@@ -2,15 +2,18 @@
 import React, { useState } from 'react';
 import '../styles/styles.css';
 
+// Import images directly
+import batanatomy from '../assets/batanatomy.png';
+import canarylongearedbat from '../assets/canarylongearedbat.png';
+import floridabonnetedbat from '../assets/floridabonnetedbat.jpg';
+import greaterbulldogbat from '../assets/greaterbulldogbat.png';
+import flyingfoxbat from '../assets/flyingfoxbat.jpg';
+
 function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const images = [
-    '/assets/batanatomy.png',
-    '/assets/canarylongearedbat.png',
-    '/assets/floridabonnetedbat.jpg',
-    '/assets/greaterbulldogbat.png',
-    '/assets/flyingfoxbat.jpg'
-  ];
+
+  // Store imported images in an array
+  const images = [batanatomy, canarylongearedbat, floridabonnetedbat, greaterbulldogbat, flyingfoxbat];
 
   const changeSlide = (direction) => {
     setCurrentSlide((prevSlide) =>
