@@ -3,6 +3,19 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+app.use(express.static('public'));
+app.get('/', (req, res) => {
+    res.send('Welcome to the Bat Conservation API!'); // Simple response for testing
+  });
+  app.get('/api/bats', (req, res) => {
+    res.sendFile(__dirname + '/public/bats.json'); // Adjust this path if necessary
+  });
+  
+  app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+  });
+    
+
 // Middleware
 app.use(cors());
 app.use(express.json());
