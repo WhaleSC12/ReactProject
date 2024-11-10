@@ -1,7 +1,7 @@
 // src/pages/Shop.js
 import React, { useState } from 'react';
 import '../styles/styles.css';
-import ShopItem from './ShopItem'; // Import ShopItem component
+import ShopItem from '../components/ShopItem'; // Import ShopItem component
 
 function Shop() {
   const [selectedItem, setSelectedItem] = useState(null);
