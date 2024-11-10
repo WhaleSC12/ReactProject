@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, '../bat-conservation/public')));
 
 // Serve `api-docs.html` at the root URL
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../bat-conservation/public', 'api-docs.html')); // Adjusted to serve `api-docs.html` for API information
+    res.sendFile(path.join(__dirname, 'api-docs.html')); // Adjusted to serve `api-docs.html` for API information
 });
 
 // API endpoint to serve JSON data for bats
