@@ -10,14 +10,14 @@ app.use(cors());
 app.use(express.json());
 
 // Serve static files (for images, JSON, and HTML)
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../bat-conservation/public')));
 
-// Simple root route to display HTML page with API information
+// Root route to serve the index.html page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html')); // Adjusted path if index.html is in public
+    res.sendFile(path.join(__dirname, '../bat-conservation/public/index.html')); // Adjusted path if index.html is in bat-conservation/public
 });
 
-// Serve JSON data for the React app
+// API endpoint to serve JSON data for bats
 app.get('/api/bats', (req, res) => {
     res.json(batsData);
 });
