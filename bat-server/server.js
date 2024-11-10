@@ -3,22 +3,22 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(express.static('public'));
-app.get('/', (req, res) => {
-    res.send('Welcome to the Bat Conservation API!'); // Simple response for testing
-  });
-  app.get('/api/bats', (req, res) => {
-    res.sendFile(__dirname + '/public/bats.json'); // Adjust this path if necessary
-  });
-  
-  app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
-  });
-    
-
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Serve static files
+app.use(express.static('public'));
+
+// Simple root route
+app.get('/', (req, res) => {
+    res.send('Welcome to the Bat Conservation API!');
+});
+
+// Serve JSON data for the React app
+app.get('/api/bats', (req, res) => {
+    res.json(batsData);
+});
 
 // Mock data or import your JSON file data
 const batsData = [
@@ -41,11 +41,7 @@ const batsData = [
   // ... add more bat data as needed
 ];
 
-// Endpoint to get bat data
-app.get('/api/bats', (req, res) => {
-  res.json(batsData);
-});
-
+// Start the server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
