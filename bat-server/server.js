@@ -12,9 +12,9 @@ app.use(express.json());
 // Serve static files (for images, JSON, and HTML)
 app.use(express.static(path.join(__dirname, '../bat-conservation/public')));
 
-// Root route to serve the index.html page
+// Serve `api-docs.html` at the root URL
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../bat-conservation/public/index.html')); // Adjusted path if index.html is in bat-conservation/public
+    res.sendFile(path.join(__dirname, 'public', 'api-docs.html')); // Adjusted to serve `api-docs.html` for API information
 });
 
 // API endpoint to serve JSON data for bats
