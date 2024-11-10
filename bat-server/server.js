@@ -9,12 +9,15 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Serve static files (for images, JSON, and HTML)
-app.use(express.static(path.join(__dirname, '../bat-conservation/public')));
+// Serve static files from the React app's build folder
+app.use(express.static(path.join(__dirname, '../bat-conservation/build')));
 
-// Serve `api-docs.html` at the root URL
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'api-docs.html')); // Adjusted to serve `api-docs.html` for API information
+// Serve images and other assets from the public folder
+app.use('/assets', express.static(path.join(__dirname, '../bat-conservation/public/assets')));
+
+// API Documentation Route
+app.get('/docs', (req, res) => {
+    res.sendFile(path.join(__dirname, '../bat-conservation/public', 'api-docs.html'));
 });
 
 // API endpoint to serve JSON data for bats
@@ -22,7 +25,7 @@ app.get('/api/bats', (req, res) => {
     res.json(batsData);
 });
 
-// Bat data array
+// Bat data array with updated asset paths
 const batsData = [
     {
         "_id": 1,
@@ -105,6 +108,12 @@ const batsData = [
         "countries": ["Southern USA"]
     }
 ];
+
+// Catch-all handler for any request that doesn’t match an API route
+// This will serve your React app’s index.html for all non-API routes
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../bat-conservation/build', 'index.html'));
+});
 
 // Start the server
 app.listen(PORT, () => {
