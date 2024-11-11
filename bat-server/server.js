@@ -117,3 +117,11 @@ const batsData = [
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
+
+app.get('/docs', (req, res) => {
+    res.sendFile(path.join(__dirname, '../bat-conservation/public', 'api-docs.html'));
+});
+
+app.get('/', (req, res) => {
+    res.redirect('/docs');
+});
