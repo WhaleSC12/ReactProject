@@ -111,9 +111,7 @@ const batsData = [
 
 // Catch-all handler for any request that doesn’t match an API route
 // This will serve your React app’s index.html for all non-API routes
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../bat-conservation/build', 'index.html'));
-});
+
 
 // Start the server
 app.listen(PORT, () => {
