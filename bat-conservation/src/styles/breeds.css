@@ -7,11 +7,12 @@
     width: 50px;
     height: 50px;
     cursor: pointer;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
+    position: fixed; /* Keeps it at a fixed position */
+    bottom: 20px;    /* Position it at the bottom */
+    right: 20px;     /* Position it on the right */
+    z-index: 1000;   /* Make sure it appears on top of other elements */
 }
+
 
 
   .add-bat-container {
