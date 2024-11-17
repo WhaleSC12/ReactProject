@@ -14,6 +14,7 @@ const AddDialog = ({ addBat, closeDialog }) => {
 
   const [errorMessage, setErrorMessage] = useState("");
 
+  // Validation schema
   const schema = Joi.object({
     name: Joi.string().min(3).max(30).required(),
     conservationStatus: Joi.string().min(3).max(30).required(),
@@ -30,9 +31,7 @@ const AddDialog = ({ addBat, closeDialog }) => {
   const validateForm = () => {
     const { error } = schema.validate(formData, { abortEarly: false });
     if (error) {
-      setErrorMessage(
-        error.details.map((detail) => detail.message).join(", ")
-      );
+      setErrorMessage(error.details.map((detail) => detail.message).join(", "));
       return false;
     }
     setErrorMessage("");
@@ -41,20 +40,22 @@ const AddDialog = ({ addBat, closeDialog }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validateForm()) return;
+
     try {
       const response = await axios.post(
         "https://reactproject-obah.onrender.com/api/bats",
-        formData // Directly send formData without modifying img_name
+        formData
       );
-  
-      addBat(response.data);
-      closeDialog();
+
+      addBat(response.data.newBat); // Update the bat list
+      closeDialog(); // Close the dialog
     } catch (error) {
       console.error("Error adding bat:", error);
+      setErrorMessage("Failed to add bat. Please try again.");
     }
   };
-  
-  
+
   return (
     <div className="add-dialog-overlay">
       <div className="add-dialog">
