@@ -40,29 +40,31 @@ const AddDialog = ({ addBat, closeDialog }) => {
     return true;
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
-
+  
     try {
+      console.log("Submitting data:", formData); // Debugging log
       const response = await axios.post(
         "https://reactproject-obah.onrender.com/api/bats",
         formData
       );
-
-      // Check if the response contains the new bat
-      if (response.data && response.data.newBat) {
-        addBat(response.data.newBat); // Add the new bat to the list
+  
+      console.log("API Response:", response.data); // Debugging log
+  
+      if (response.status === 201 && response.data.newBat) {
+        addBat(response.data.newBat); // Update the bat list
         closeDialog(); // Close the dialog
       } else {
-        throw new Error("Unexpected server response.");
+        setErrorMessage("Failed to add bat. Invalid server response.");
       }
     } catch (error) {
       console.error("Error adding bat:", error);
-      setErrorMessage("Failed to add bat. Please ensure all fields are correct and try again.");
+      setErrorMessage("An error occurred while adding the bat. Please try again.");
     }
   };
+      
 
   return (
     <div className="add-dialog-overlay">

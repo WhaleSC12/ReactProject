@@ -118,57 +118,51 @@ app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
 
+// Serve API documentation
 app.get('/docs', (req, res) => {
     res.sendFile(path.join(__dirname, '../bat-conservation/public', 'api-docs.html'));
 });
 
+// Redirect root to documentation
 app.get('/', (req, res) => {
     res.redirect('/docs');
 });
 
-app.post('/api/bats', (req, res) => {
-    const newBat = req.body;
-    
-    if (!newBat.name || !newBat.conservationStatus || !newBat.notable || !newBat.countries || !newBat.img_name) {
-        return res.status(400).json({ error: 'All fields are required.' });
-    }
-
-    // Generate a new unique ID for the bat
-    newBat._id = batsData.length + 1;
-
-    // Add the new bat to the in-memory storage
-    batsData.push(newBat);
-
-    res.status(201).json(newBat);
-});
-
-
+// Import Joi for validation
 const Joi = require("joi");
 
-      
+// Define Joi schema for bat validation
 const batSchema = Joi.object({
     name: Joi.string().min(3).max(30).required(),
     conservationStatus: Joi.string().min(3).max(30).required(),
     notable: Joi.string().min(5).max(100).required(),
     countries: Joi.string().required(),
     img_name: Joi.string().required(),
-  });
-  app.post("/api/bats", (req, res) => {
+});
+
+// Handle POST request to add a new bat
+app.post('/api/bats', (req, res) => {
+    // Validate incoming data against the schema
     const { error } = batSchema.validate(req.body);
     if (error) {
-      return res.status(400).send({ success: false, message: error.details[0].message });
+        return res.status(400).send({ success: false, message: error.details[0].message });
     }
-  
-    const newBat = {
-      _id: batsData.length + 1,
-      ...req.body,
-    };
-  
-    batsData.push(newBat);
-    res.status(201).send({ success: true, newBat });
-  });
 
-  app.get("*", (req, res) => {
+    // Create new bat object
+    const newBat = {
+        _id: batsData.length + 1, // Generate unique ID
+        ...req.body,
+    };
+
+    // Add new bat to the in-memory batsData array
+    batsData.push(newBat);
+
+    // Respond with the newly added bat
+    res.status(201).send({ success: true, newBat });
+});
+
+// Catch-all route to serve React app for undefined routes
+app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "../bat-conservation/build", "index.html"));
-  });
-  
+});
+

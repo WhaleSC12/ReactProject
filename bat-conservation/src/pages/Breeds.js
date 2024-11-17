@@ -20,11 +20,16 @@ const Breeds = () => {
       }
     })();
   }, []);
-
+ 
   const addBat = (newBat) => {
-    setBats((prevBats) => [...prevBats, newBat]);
+    console.log("Adding new bat:", newBat); // Debugging log
+    setBats((prevBats) => {
+      const updatedBats = [...prevBats, newBat];
+      console.log("Updated bats array:", updatedBats); // Debugging log
+      return updatedBats;
+    });
   };
-
+  
   const openAddDialog = () => {
     console.log("Add Dialog opened");
     setShowAddDialog(true);
