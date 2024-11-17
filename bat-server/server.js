@@ -141,3 +141,26 @@ app.post('/api/bats', (req, res) => {
 
     res.status(201).json(newBat);
 });
+
+
+const Joi = require("joi");
+
+app.post("/api/bats", (req, res) => {
+  const schema = Joi.object({
+    name: Joi.string().min(3).max(30).required(),
+    conservationStatus: Joi.string().min(3).max(30).required(),
+    notable: Joi.string().min(5).max(100).required(),
+    countries: Joi.string().required(),
+    img_name: Joi.string().uri().required(),
+  });
+
+  const { error } = schema.validate(req.body);
+  if (error) {
+    return res.status(400).send({ success: false, message: error.details[0].message });
+  }
+
+  const newBat = { _id: batsData.length + 1, ...req.body };
+  batsData.push(newBat);
+
+  res.send({ success: true, newBat });
+});
