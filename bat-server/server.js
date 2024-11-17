@@ -125,3 +125,19 @@ app.get('/docs', (req, res) => {
 app.get('/', (req, res) => {
     res.redirect('/docs');
 });
+
+app.post('/api/bats', (req, res) => {
+    const newBat = req.body;
+    
+    if (!newBat.name || !newBat.conservationStatus || !newBat.notable || !newBat.countries || !newBat.img_name) {
+        return res.status(400).json({ error: 'All fields are required.' });
+    }
+
+    // Generate a new unique ID for the bat
+    newBat._id = batsData.length + 1;
+
+    // Add the new bat to the in-memory storage
+    batsData.push(newBat);
+
+    res.status(201).json(newBat);
+});
