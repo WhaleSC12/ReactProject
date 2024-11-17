@@ -19,10 +19,10 @@ const AddDialog = ({ addBat, closeDialog }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "https://reactproject-obah.onrender.com/api/bats",
+        const response = await axios.post("https://reactproject-obah.onrender.com/api/bats", 
         formData
       );
+
       addBat(response.data); // Add the new bat to the parent state
       closeDialog(); // Close the dialog
     } catch (error) {
