@@ -36,7 +36,16 @@ const Breeds = () => {
   };
 
   return (
+
+    
     <div id="breeds">
+
+              {fsdfdsfjdsfnjewnfjnewkjfnkenkj}
+      <div style={{ height: "80px", backgroundColor: "transparent" }}>
+        {fdsjfisdnifdsjfjsdifjidsfj}
+        <p style={{ visibility: "hidden" }}>This is placeholder text to push content down.</p>
+      </div>
+
       {/* Display Bats */}
       <div className="breeds-gallery">
         {bats.map((bat) => (
