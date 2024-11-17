@@ -23,11 +23,13 @@ const AddDialog = ({ addBat, closeDialog }) => {
     img_name: Joi.string().required(),
   });
 
+  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  // Validate form data
   const validateForm = () => {
     const { error } = schema.validate(formData, { abortEarly: false });
     if (error) {
@@ -38,6 +40,7 @@ const AddDialog = ({ addBat, closeDialog }) => {
     return true;
   };
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
@@ -48,11 +51,16 @@ const AddDialog = ({ addBat, closeDialog }) => {
         formData
       );
 
-      addBat(response.data.newBat); // Update the bat list
-      closeDialog(); // Close the dialog
+      // Check if the response contains the new bat
+      if (response.data && response.data.newBat) {
+        addBat(response.data.newBat); // Add the new bat to the list
+        closeDialog(); // Close the dialog
+      } else {
+        throw new Error("Unexpected server response.");
+      }
     } catch (error) {
       console.error("Error adding bat:", error);
-      setErrorMessage("Failed to add bat. Please try again.");
+      setErrorMessage("Failed to add bat. Please ensure all fields are correct and try again.");
     }
   };
 
