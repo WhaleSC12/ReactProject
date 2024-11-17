@@ -146,13 +146,14 @@ app.post('/api/bats', (req, res) => {
 const Joi = require("joi");
 
 app.post("/api/bats", (req, res) => {
-  const schema = Joi.object({
-    name: Joi.string().min(3).max(30).required(),
-    conservationStatus: Joi.string().min(3).max(30).required(),
-    notable: Joi.string().min(5).max(100).required(),
-    countries: Joi.string().required(),
-    img_name: Joi.string().uri().required(),
-  });
+    const batSchema = Joi.object({
+        name: Joi.string().min(3).required(),
+        conservationStatus: Joi.string().min(3).required(),
+        notable: Joi.string().min(3).required(),
+        countries: Joi.string().min(3).required(),
+        img_name: Joi.string().required(), // Change this line to accept any string
+      });
+      
 
   const { error } = schema.validate(req.body);
   if (error) {
