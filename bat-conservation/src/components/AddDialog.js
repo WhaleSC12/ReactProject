@@ -42,20 +42,18 @@ const AddDialog = ({ addBat, closeDialog }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Convert relative path to absolute URL
-      const updatedFormData = {
-        ...formData,
-        img_name: `https://reactproject-obah.onrender.com${formData.img_name}`,
-      };
+      const response = await axios.post(
+        "https://reactproject-obah.onrender.com/api/bats",
+        formData // Directly send formData without modifying img_name
+      );
   
-      const response = await axios.post("https://reactproject-obah.onrender.com/api/bats", updatedFormData);
-  
-      addBat(response.data); // Add the new bat to the parent state
-      closeDialog(); // Close the dialog
+      addBat(response.data);
+      closeDialog();
     } catch (error) {
       console.error("Error adding bat:", error);
     }
   };
+  
   
   return (
     <div className="add-dialog-overlay">
