@@ -53,37 +53,33 @@ const AddDialog = ({ addBat, editBat, closeDialog, bat }) => {
     return true;
   };
 
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (!validateForm()) return;
-  
+
     try {
-      if (bat) {
-        // Editing an existing bat
-        const { _id, ...batData } = formData; // Extract _id from formData
-        console.log("Submitting updated bat data:", batData); // Log the data to be submitted
-        console.log("Bat ID for update:", _id); // Log the ID
-        await editBat(_id, batData); // Call the editBat function
-      } else {
-        // Adding a new bat
-        const response = await axios.post(
-          "https://reactproject-obah.onrender.com/api/bats",
-          formData
-        );
-  
-        if (response.status === 201 && response.data.newBat) {
-          addBat(response.data.newBat);
+        if (bat) {
+            // Editing an existing bat
+            await editBat(bat._id, formData); // Use bat._id directly
+        } else {
+            // Adding a new bat
+            const response = await axios.post(
+                "https://reactproject-obah.onrender.com/api/bats",
+                formData
+            );
+            if (response.status === 201 && response.data.newBat) {
+                addBat(response.data.newBat);
+            }
         }
-      }
-      closeDialog();
+        closeDialog();
     } catch (error) {
-      console.error("Error submitting form:", error);
-      setErrorMessage("An error occurred while submitting the form. Please try again.");
+        console.error("Error submitting form:", error);
+        setErrorMessage("An error occurred while submitting the form. Please try again.");
     }
-  };
-  
-  
+};
+
   
   
   return (
