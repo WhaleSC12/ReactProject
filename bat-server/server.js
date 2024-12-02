@@ -167,8 +167,9 @@ app.get("*", (req, res) => {
 });
 
 app.put('/api/bats/:id', (req, res) => {
-    console.log("PUT request received with data:", req.body); // Log the received data
-    const { id } = req.params;
+    console.log("PUT request received with data:", req.body); // Log incoming data
+  
+    const { id } = req.params; // Extract ID from URL
     const { error } = batSchema.validate(req.body);
     if (error) {
       console.error("Validation error:", error.details);
@@ -180,9 +181,11 @@ app.put('/api/bats/:id', (req, res) => {
       return res.status(404).send({ success: false, message: "Bat not found" });
     }
   
-    batsData[index] = { ...batsData[index], ...req.body };
+    batsData[index] = { ...batsData[index], ...req.body }; // Update fields
+    console.log("Updated bat:", batsData[index]); // Log updated bat
     res.status(200).send({ success: true, updatedBat: batsData[index] });
   });
+  
   
 
   app.delete('/api/bats/:id', (req, res) => {

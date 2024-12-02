@@ -27,16 +27,17 @@ const Breeds = () => {
   const addBat = (newBat) => setBats([...bats, newBat]);
 
   const editBat = async (id, updatedBat) => {
-    console.log("Payload sent to server for editing:", updatedBat); // Debugging log
+    console.log("Payload sent to server:", updatedBat); // Debugging log
+    console.log("ID sent to server:", id); // Debugging log
     try {
       const response = await axios.put(
-        `https://reactproject-obah.onrender.com/api/bats/${id}`, // Pass _id in the URL
+        `https://reactproject-obah.onrender.com/api/bats/${id}`, // Pass ID in URL
         updatedBat
       );
-      console.log("Server response for edit:", response.data); // Debugging log
+      console.log("Server response:", response.data); // Debugging log
   
       if (response.status === 200 && response.data.success) {
-        // Update the local state with the updated bat data
+        // Update local state with the updated bat data
         setBats((prevBats) =>
           prevBats.map((bat) =>
             bat._id === id ? response.data.updatedBat : bat
@@ -48,6 +49,7 @@ const Breeds = () => {
       console.error("Error editing bat:", error);
     }
   };
+  
   
 
   const deleteBat = async (batId) => {

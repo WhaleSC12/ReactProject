@@ -61,9 +61,10 @@ const AddDialog = ({ addBat, editBat, closeDialog, bat }) => {
     try {
       if (bat) {
         // Editing an existing bat
-        const { _id, ...batData } = formData; // Exclude _id from the request body
-        console.log("Submitting updated bat without _id:", batData); // Debugging log
-        await editBat(_id, batData); // Pass the _id separately
+        const { _id, ...batData } = formData; // Exclude _id from payload
+        console.log("Submitting updated bat:", batData); // Debugging log
+        console.log("Bat ID for update:", _id); // Debugging log
+        await editBat(_id, batData); // Pass ID separately
       } else {
         // Adding a new bat
         const response = await axios.post(
@@ -82,9 +83,7 @@ const AddDialog = ({ addBat, editBat, closeDialog, bat }) => {
     }
   };
   
-    
-
-
+  
   return (
     <div className="add-dialog-overlay">
       <div className="add-dialog">
