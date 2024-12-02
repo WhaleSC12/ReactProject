@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Joi from "joi-browser";
 import "../styles/add-dialog.css";
 
-const AddDialog = ({ addBat, closeDialog }) => {
+const AddDialog = ({ addBat, editBat, closeDialog, bat }) => {
   const [formData, setFormData] = useState({
     name: "",
     conservationStatus: "",
@@ -13,6 +13,19 @@ const AddDialog = ({ addBat, closeDialog }) => {
   });
 
   const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    if (bat) {
+      // Pre-fill the form if a bat is provided for editing
+      setFormData({
+        name: bat.name,
+        conservationStatus: bat.conservationStatus,
+        notable: bat.notable,
+        countries: bat.countries,
+        img_name: bat.img_name,
+      });
+    }
+  }, [bat]);
 
   // Validation schema
   const schema = Joi.object({
@@ -43,33 +56,36 @@ const AddDialog = ({ addBat, closeDialog }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
-  
+
     try {
-      console.log("Submitting data:", formData); // Debugging log
-      const response = await axios.post(
-        "https://reactproject-obah.onrender.com/api/bats",
-        formData
-      );
-  
-      console.log("API Response:", response.data); // Debugging log
-  
-      if (response.status === 201 && response.data.newBat) {
-        addBat(response.data.newBat); // Update the bat list
-        closeDialog(); // Close the dialog
+      if (bat) {
+        // Edit existing bat
+        await editBat({ ...formData, _id: bat._id });
       } else {
-        setErrorMessage("Failed to add bat. Invalid server response.");
+        // Add new bat
+        const response = await axios.post(
+          "https://reactproject-obah.onrender.com/api/bats",
+          formData
+        );
+        if (response.status === 201 && response.data.newBat) {
+          addBat(response.data.newBat);
+        } else {
+          setErrorMessage("Failed to add bat. Invalid server response.");
+        }
       }
+      closeDialog();
     } catch (error) {
-      console.error("Error adding bat:", error);
-      setErrorMessage("An error occurred while adding the bat. Please try again.");
+      console.error("Error submitting form:", error);
+      setErrorMessage(
+        "An error occurred while submitting the form. Please try again."
+      );
     }
   };
-      
 
   return (
     <div className="add-dialog-overlay">
       <div className="add-dialog">
-        <h2>Add a New Bat</h2>
+        <h2>{bat ? "Edit Bat" : "Add a New Bat"}</h2>
         {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         <form onSubmit={handleSubmit}>
           <input
@@ -111,10 +127,25 @@ const AddDialog = ({ addBat, closeDialog }) => {
           >
             <option value="">Select an Image</option>
             <option value="/assets/bigbrownbat.jpg">Big Brown Bat</option>
-            <option value="/assets/canarylongearedbat.png">Canary Long-eared Bat</option>
+            <option value="/assets/canarylongearedbat.png">
+              Canary Long-eared Bat
+            </option>
             <option value="/assets/easternredbat.jpg">Eastern Red Bat</option>
+            <option value="/assets/floridabonnetedbat.jpg">
+              Florida Bonneted Bat
+            </option>
+            <option value="/assets/flyingfoxbat.jpg">Flying Fox Bat</option>
+            <option value="/assets/greaterbulldogbat.png">
+              Greater Bulldog Bat
+            </option>
+            <option value="/assets/hoarybat.jpg">Hoary Bat</option>
+            <option value="/assets/mexicanfreetailedbat.jpg">
+              Mexican Free-tailed Bat
+            </option>
+            <option value="/assets/vampirebat.jpg">Vampire Bat</option>
+            <option value="/assets/yellowbat.jpg">Yellow Bat</option>
           </select>
-          <button type="submit">Add Bat</button>
+          <button type="submit">{bat ? "Save Changes" : "Add Bat"}</button>
           <button type="button" onClick={closeDialog}>
             Cancel
           </button>

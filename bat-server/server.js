@@ -166,3 +166,24 @@ app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "../bat-conservation/build", "index.html"));
 });
 
+app.put('/api/bats/:id', (req, res) => {
+    const { id } = req.params;
+    const { error } = batSchema.validate(req.body);
+    if (error) return res.status(400).send({ success: false, message: error.details[0].message });
+  
+    const index = batsData.findIndex((bat) => bat._id === parseInt(id));
+    if (index === -1) return res.status(404).send({ success: false, message: "Bat not found" });
+  
+    batsData[index] = { ...batsData[index], ...req.body };
+    res.status(200).send({ success: true, updatedBat: batsData[index] });
+  });
+  
+  app.delete('/api/bats/:id', (req, res) => {
+    const { id } = req.params;
+    const index = batsData.findIndex((bat) => bat._id === parseInt(id));
+    if (index === -1) return res.status(404).send({ success: false, message: "Bat not found" });
+  
+    batsData.splice(index, 1);
+    res.status(200).send({ success: true });
+  });
+    

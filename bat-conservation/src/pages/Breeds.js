@@ -6,98 +6,68 @@ import "../styles/breeds.css";
 const Breeds = () => {
   const [bats, setBats] = useState([]);
   const [showAddDialog, setShowAddDialog] = useState(false);
+  const [showEditDialog, setShowEditDialog] = useState(false);
   const [selectedBat, setSelectedBat] = useState(null);
 
-  // Fetch existing bats when the component mounts
   useEffect(() => {
+    // Fetch bats on mount
     (async () => {
       try {
         const response = await axios.get("https://reactproject-obah.onrender.com/api/bats");
         setBats(response.data);
-        console.log("Fetched bats:", response.data);
       } catch (error) {
         console.error("Error fetching bats:", error);
       }
     })();
   }, []);
- 
-  const addBat = (newBat) => {
-    console.log("Adding new bat:", newBat); // Debugging log
-    setBats((prevBats) => {
-      const updatedBats = [...prevBats, newBat];
-      console.log("Updated bats array:", updatedBats); // Debugging log
-      return updatedBats;
-    });
-  };
-  
-  const openAddDialog = () => {
-    console.log("Add Dialog opened");
-    setShowAddDialog(true);
+
+  const addBat = (newBat) => setBats([...bats, newBat]);
+
+  const editBat = async (updatedBat) => {
+    try {
+      const response = await axios.put(`https://reactproject-obah.onrender.com/api/bats/${updatedBat._id}`, updatedBat);
+      if (response.status === 200) {
+        setBats(bats.map((bat) => (bat._id === updatedBat._id ? updatedBat : bat)));
+        setShowEditDialog(false);
+      }
+    } catch (error) {
+      console.error("Error editing bat:", error);
+    }
   };
 
-  const closeAddDialog = () => {
-    console.log("Add Dialog closed");
-    setShowAddDialog(false);
+  const deleteBat = async (batId) => {
+    try {
+      const response = await axios.delete(`https://reactproject-obah.onrender.com/api/bats/${batId}`);
+      if (response.status === 200) {
+        setBats(bats.filter((bat) => bat._id !== batId));
+      }
+    } catch (error) {
+      console.error("Error deleting bat:", error);
+    }
   };
 
   return (
     <div id="breeds" style={{ paddingTop: "100px" }}>
-      {/* Display Bats */}
       <div className="breeds-gallery">
         {bats.map((bat) => (
-          <div
-            key={bat._id}
-            className="breeds-item"
-            onClick={() => setSelectedBat(bat)}
-          >
-            <img
-              src={`https://reactproject-obah.onrender.com${bat.img_name}`}
-              alt={bat.name}
-            />
+          <div key={bat._id} className="breeds-item">
+            <img src={`https://reactproject-obah.onrender.com${bat.img_name}`} alt={bat.name} />
             <p>{bat.name}</p>
+            <button onClick={() => { setSelectedBat(bat); setShowEditDialog(true); }}>Edit</button>
+            <button onClick={() => deleteBat(bat._id)}>Delete</button>
           </div>
         ))}
       </div>
-
-      {/* Add Button at the Bottom */}
       <div className="add-bat-container">
-        <button id="add-bat" onClick={openAddDialog}>
-          +
-        </button>
+        <button id="add-bat" onClick={() => setShowAddDialog(true)}>+</button>
       </div>
-
-      {/* Add Dialog */}
-      {showAddDialog && (
-        <AddDialog addBat={addBat} closeDialog={closeAddDialog} />
-      )}
-
-      {/* Bat Detail Modal */}
-      {selectedBat && (
-        <div className="modal-overlay" onClick={() => setSelectedBat(null)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <h2>{selectedBat.name}</h2>
-            <img
-              src={`https://reactproject-obah.onrender.com${selectedBat.img_name}`}
-              alt={selectedBat.name}
-            />
-            <p>
-              <strong>Conservation Status:</strong> {selectedBat.conservationStatus}
-            </p>
-            <p>
-              <strong>Notable Features:</strong> {selectedBat.notable}
-            </p>
-            <p>
-              <strong>Countries Found In:</strong> {selectedBat.countries}
-            </p>
-          </div>
-        </div>
-      )}
+      {showAddDialog && <AddDialog addBat={addBat} closeDialog={() => setShowAddDialog(false)} />}
+      {showEditDialog && <AddDialog bat={selectedBat} editBat={editBat} closeDialog={() => setShowEditDialog(false)} />}
     </div>
   );
 };
 
 export default Breeds;
-
 
 
 
