@@ -26,25 +26,29 @@ const Breeds = () => {
 
   const addBat = (newBat) => setBats([...bats, newBat]);
 
-  const editBat = async (updatedBat) => {
+  const editBat = async (id, updatedBat) => {
+    console.log("Payload sent to server for editing:", updatedBat); // Debugging log
     try {
       const response = await axios.put(
-        `https://reactproject-obah.onrender.com/api/bats/${updatedBat._id}`,
+        `https://reactproject-obah.onrender.com/api/bats/${id}`, // Pass _id in the URL
         updatedBat
       );
+      console.log("Server response for edit:", response.data); // Debugging log
+  
       if (response.status === 200 && response.data.success) {
+        // Update the local state with the updated bat data
         setBats((prevBats) =>
           prevBats.map((bat) =>
-            bat._id === updatedBat._id ? response.data.updatedBat : bat
+            bat._id === id ? response.data.updatedBat : bat
           )
         );
         setShowEditDialog(false);
-        setEditModalBat(null); // Close edit modal
       }
     } catch (error) {
       console.error("Error editing bat:", error);
     }
   };
+  
 
   const deleteBat = async (batId) => {
     try {
