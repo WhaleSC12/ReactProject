@@ -26,31 +26,28 @@ const Breeds = () => {
   const addBat = (newBat) => setBats([...bats, newBat]);
 
   const editBat = async (updatedBat) => {
+    console.log("Payload sent to server:", updatedBat); // Log the payload
     try {
       const response = await axios.put(
         `https://reactproject-obah.onrender.com/api/bats/${updatedBat._id}`,
         updatedBat
       );
-  
       if (response.status === 200 && response.data.success) {
-        // Update the local state with the updated bat
         setBats((prevBats) =>
           prevBats.map((bat) =>
             bat._id === updatedBat._id ? response.data.updatedBat : bat
           )
         );
         setShowEditDialog(false);
-      } else {
-        console.error("Failed to update bat:", response.data.message);
       }
     } catch (error) {
+      console.error("Error editing bat:", error);
       if (error.response && error.response.status === 400) {
-        console.error("Validation error:", error.response.data.message);
-      } else {
-        console.error("Error editing bat:", error);
+        console.error("Validation error from server:", error.response.data.message);
       }
     }
   };
+  
   
   
 
