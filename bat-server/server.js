@@ -177,7 +177,7 @@ app.put('/api/bats/:id', (req, res) => {
     batsData[index] = { ...batsData[index], ...req.body };
     res.status(200).send({ success: true, updatedBat: batsData[index] });
   });
-  
+
   app.delete('/api/bats/:id', (req, res) => {
     const { id } = req.params;
     const index = batsData.findIndex((bat) => bat._id === parseInt(id));

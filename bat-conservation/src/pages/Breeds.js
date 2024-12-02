@@ -8,7 +8,6 @@ const Breeds = () => {
   const [showAddDialog, setShowAddDialog] = useState(false);
   const [showEditDialog, setShowEditDialog] = useState(false);
   const [selectedBat, setSelectedBat] = useState(null);
-  const [showInfoModal, setShowInfoModal] = useState(false);
 
   useEffect(() => {
     // Fetch bats on mount
@@ -28,20 +27,33 @@ const Breeds = () => {
 
   const editBat = async (updatedBat) => {
     try {
+      // Ensure the ID is sent as an integer
       const response = await axios.put(
         `https://reactproject-obah.onrender.com/api/bats/${updatedBat._id}`,
         updatedBat
       );
-      if (response.status === 200) {
-        setBats(
-          bats.map((bat) => (bat._id === updatedBat._id ? updatedBat : bat))
+  
+      if (response.status === 200 && response.data.success) {
+        // Use the updated bat data from the server response
+        setBats((prevBats) =>
+          prevBats.map((bat) =>
+            bat._id === updatedBat._id ? response.data.updatedBat : bat
+          )
         );
         setShowEditDialog(false);
+      } else {
+        console.error("Failed to update bat:", response.data.message);
       }
     } catch (error) {
-      console.error("Error editing bat:", error);
+      if (error.response && error.response.status === 400) {
+        // Display server-side validation error
+        console.error("Validation error:", error.response.data.message);
+      } else {
+        console.error("Error editing bat:", error);
+      }
     }
   };
+  
 
   const deleteBat = async (batId) => {
     try {
@@ -58,7 +70,6 @@ const Breeds = () => {
 
   const handleBatClick = (bat) => {
     setSelectedBat(bat);
-    setShowInfoModal(true);
   };
 
   return (
@@ -110,13 +121,10 @@ const Breeds = () => {
           closeDialog={() => setShowEditDialog(false)}
         />
       )}
-      {showInfoModal && selectedBat && (
-        <div className="info-modal">
-          <div className="info-modal-content">
-            <span
-              className="close"
-              onClick={() => setShowInfoModal(false)}
-            >
+      {selectedBat && (
+        <div className="modal-overlay" onClick={() => setSelectedBat(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <span className="close" onClick={() => setSelectedBat(null)}>
               &times;
             </span>
             <h2>{selectedBat.name}</h2>
@@ -133,7 +141,7 @@ const Breeds = () => {
             </p>
             <p>
               <strong>Countries Found In:</strong>{" "}
-              {selectedBat.countries.join(", ")}
+              {selectedBat.countries}
             </p>
           </div>
         </div>
@@ -145,59 +153,3 @@ const Breeds = () => {
 export default Breeds;
 
 
-
-/*
-import React, { useEffect, useState } from 'react';
-import '../styles/styles.css';
-
-function Breeds() {
-  const [bats, setBats] = useState([]);
-  const [selectedBat, setSelectedBat] = useState(null);
-
-  useEffect(() => {
-    // Fetch the JSON data from the public folder
-    fetch(`${process.env.PUBLIC_URL}/data/bats.json`)
-      .then((response) => response.json())
-      .then((data) => setBats(data))
-      .catch((error) => console.error("Error loading JSON data:", error));
-  }, []);
-
-  const handleOpenModal = (bat) => {
-    setSelectedBat(bat);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedBat(null);
-  };
-
-  return (
-    <div className="breeds-container">
-      <h1>Bat Breeds</h1> {}
-      <div className="breeds-gallery">
-        {bats.map((bat) => (
-          <div key={bat._id} className="breeds-item" onClick={() => handleOpenModal(bat)}>
-            {}
-            <img src={`${process.env.PUBLIC_URL}/assets/${bat.img_name}`} alt={bat.name} />
-            <p>{bat.name}</p>
-          </div>
-        ))}
-      </div>
-
-      {selectedBat && (
-        <div className="modal-overlay" onClick={handleCloseModal}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="close-button" onClick={handleCloseModal}>X</button>
-            <h2>{selectedBat.name}</h2>
-            <img src={`${process.env.PUBLIC_URL}/assets/${selectedBat.img_name}`} alt={selectedBat.name} />
-            <p><strong>Conservation Status:</strong> {selectedBat.conservationStatus}</p>
-            <p><strong>Notable Features:</strong> {selectedBat.notable}</p>
-            <p><strong>Countries Found In:</strong> {selectedBat.countries.join(', ')}</p>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-export default Breeds;
-*/
