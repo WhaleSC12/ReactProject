@@ -168,25 +168,27 @@ app.get("*", (req, res) => {
 
 app.put('/api/bats/:id', (req, res) => {
     console.log("PUT request received with data:", req.body); // Log incoming data
+    console.log("Bat ID from URL:", req.params.id); // Log the ID from the URL
   
-    const { id } = req.params; // Extract ID from URL
+    const { id } = req.params;
     const { error } = batSchema.validate(req.body);
     if (error) {
-      console.error("Validation error:", error.details);
+      console.error("Validation error:", error.details); // Log validation errors
       return res.status(400).send({ success: false, message: error.details[0].message });
     }
   
     const index = batsData.findIndex((bat) => bat._id === parseInt(id));
     if (index === -1) {
+      console.error("Bat not found for ID:", id); // Log if the bat is not found
       return res.status(404).send({ success: false, message: "Bat not found" });
     }
   
-    batsData[index] = { ...batsData[index], ...req.body }; // Update fields
-    console.log("Updated bat:", batsData[index]); // Log updated bat
+    batsData[index] = { ...batsData[index], ...req.body };
+    console.log("Updated bat:", batsData[index]); // Log the updated bat
     res.status(200).send({ success: true, updatedBat: batsData[index] });
   });
   
-  
+    
 
   app.delete('/api/bats/:id', (req, res) => {
     const { id } = req.params;

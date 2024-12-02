@@ -56,15 +56,15 @@ const AddDialog = ({ addBat, editBat, closeDialog, bat }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    if (!validateForm()) return; // Ensure client-side validation passes
+    if (!validateForm()) return;
   
     try {
       if (bat) {
         // Editing an existing bat
-        const { _id, ...batData } = formData; // Exclude _id from payload
-        console.log("Submitting updated bat:", batData); // Debugging log
-        console.log("Bat ID for update:", _id); // Debugging log
-        await editBat(_id, batData); // Pass ID separately
+        const { _id, ...batData } = formData; // Extract _id from formData
+        console.log("Submitting updated bat data:", batData); // Log the data to be submitted
+        console.log("Bat ID for update:", _id); // Log the ID
+        await editBat(_id, batData); // Call the editBat function
       } else {
         // Adding a new bat
         const response = await axios.post(
@@ -76,12 +76,14 @@ const AddDialog = ({ addBat, editBat, closeDialog, bat }) => {
           addBat(response.data.newBat);
         }
       }
-      closeDialog(); // Close the modal
+      closeDialog();
     } catch (error) {
       console.error("Error submitting form:", error);
       setErrorMessage("An error occurred while submitting the form. Please try again.");
     }
   };
+  
+  
   
   
   return (
