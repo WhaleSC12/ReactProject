@@ -7,7 +7,8 @@ const Breeds = () => {
   const [bats, setBats] = useState([]);
   const [showAddDialog, setShowAddDialog] = useState(false);
   const [showEditDialog, setShowEditDialog] = useState(false);
-  const [selectedBat, setSelectedBat] = useState(null);
+  const [viewModalBat, setViewModalBat] = useState(null); // Bat for viewing details
+  const [editModalBat, setEditModalBat] = useState(null); // Bat for editing
 
   useEffect(() => {
     // Fetch bats on mount
@@ -26,7 +27,6 @@ const Breeds = () => {
   const addBat = (newBat) => setBats([...bats, newBat]);
 
   const editBat = async (updatedBat) => {
-    console.log("Payload sent to server:", updatedBat); // Log the payload
     try {
       const response = await axios.put(
         `https://reactproject-obah.onrender.com/api/bats/${updatedBat._id}`,
@@ -39,17 +39,12 @@ const Breeds = () => {
           )
         );
         setShowEditDialog(false);
+        setEditModalBat(null); // Close edit modal
       }
     } catch (error) {
       console.error("Error editing bat:", error);
-      if (error.response && error.response.status === 400) {
-        console.error("Validation error from server:", error.response.data.message);
-      }
     }
   };
-  
-  
-  
 
   const deleteBat = async (batId) => {
     try {
@@ -65,7 +60,12 @@ const Breeds = () => {
   };
 
   const handleBatClick = (bat) => {
-    setSelectedBat(bat);
+    setViewModalBat(bat); // Open the view modal
+  };
+
+  const handleEditClick = (bat) => {
+    setEditModalBat(bat); // Open the edit modal
+    setShowEditDialog(true);
   };
 
   return (
@@ -76,14 +76,13 @@ const Breeds = () => {
             <img
               src={`https://reactproject-obah.onrender.com${bat.img_name}`}
               alt={bat.name}
-              onClick={() => handleBatClick(bat)}
+              onClick={() => handleBatClick(bat)} // Open the view modal
             />
             <p>{bat.name}</p>
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                setSelectedBat(bat);
-                setShowEditDialog(true);
+                handleEditClick(bat); // Open the edit modal
               }}
             >
               Edit
@@ -104,47 +103,53 @@ const Breeds = () => {
           +
         </button>
       </div>
+      {/* Add Bat Modal */}
       {showAddDialog && (
         <AddDialog
           addBat={addBat}
           closeDialog={() => setShowAddDialog(false)}
         />
       )}
-      {showEditDialog && (
-        <AddDialog
-          bat={selectedBat}
-          editBat={editBat}
-          closeDialog={() => setShowEditDialog(false)}
-        />
-      )}
-      {selectedBat && (
-  <div className="modal-overlay" onClick={() => setSelectedBat(null)}>
-    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-      <span className="close" onClick={() => setSelectedBat(null)}>
-        &times;
-      </span>
-      <h2>{selectedBat.name}</h2>
-      <img
-        src={`https://reactproject-obah.onrender.com${selectedBat.img_name}`}
-        alt={selectedBat.name}
+      {/* Edit Bat Modal */}
+      {showEditDialog && editModalBat && (
+      <AddDialog
+      bat={editModalBat} // Pass the bat to be edited
+      editBat={editBat} // Pass the edit function
+      closeDialog={() => {
+      setShowEditDialog(false);
+      setEditModalBat(null);
+      }}
       />
-      <p>
-        <strong>Conservation Status:</strong> {selectedBat.conservationStatus}
-      </p>
-      <p>
-        <strong>Notable Features:</strong> {selectedBat.notable}
-      </p>
-      <p>
-        <strong>Countries Found In:</strong> {selectedBat.countries}
-      </p>
-    </div>
-  </div>
-  )}
+      )}
 
+      {/* View Bat Modal */}
+      {viewModalBat && (
+        <div className="modal-overlay" onClick={() => setViewModalBat(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <span className="close" onClick={() => setViewModalBat(null)}>
+              &times;
+            </span>
+            <h2>{viewModalBat.name}</h2>
+            <img
+              src={`https://reactproject-obah.onrender.com${viewModalBat.img_name}`}
+              alt={viewModalBat.name}
+            />
+            <p>
+              <strong>Conservation Status:</strong>{" "}
+              {viewModalBat.conservationStatus}
+            </p>
+            <p>
+              <strong>Notable Features:</strong> {viewModalBat.notable}
+            </p>
+            <p>
+              <strong>Countries Found In:</strong>{" "}
+              {viewModalBat.countries}
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default Breeds;
-
-

@@ -56,33 +56,36 @@ const AddDialog = ({ addBat, editBat, closeDialog, bat }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    if (!validateForm()) return;
+    if (!validateForm()) return; // Ensure validation passes
   
     try {
       if (bat) {
+        // Editing an existing bat
         const updatedBat = {
           ...formData,
-          _id: bat._id,
-          countries: formData.countries.split(',').map((c) => c.trim()).join(','), // Convert to string
+          _id: bat._id, // Include the ID for the server
         };
-        await editBat(updatedBat);
+        console.log("Submitting updated bat:", updatedBat); // Debugging log
+        await editBat(updatedBat); // Invoke the edit function passed via props
       } else {
+        // Adding a new bat
         const response = await axios.post(
           "https://reactproject-obah.onrender.com/api/bats",
           formData
         );
+  
         if (response.status === 201 && response.data.newBat) {
           addBat(response.data.newBat);
         }
       }
-      closeDialog();
+      closeDialog(); // Close the modal after successful operation
     } catch (error) {
       console.error("Error submitting form:", error);
+      setErrorMessage("An error occurred while submitting the form. Please try again.");
     }
   };
-  
-  
-  
+    
+
 
   return (
     <div className="add-dialog-overlay">
