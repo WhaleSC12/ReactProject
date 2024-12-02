@@ -56,11 +56,12 @@ const AddDialog = ({ addBat, editBat, closeDialog, bat }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
-
+  
     try {
       if (bat) {
         // Edit existing bat
-        await editBat({ ...formData, _id: bat._id });
+        const updatedBat = { ...formData, _id: bat._id };
+        await editBat(updatedBat);
       } else {
         // Add new bat
         const response = await axios.post(
@@ -81,6 +82,7 @@ const AddDialog = ({ addBat, editBat, closeDialog, bat }) => {
       );
     }
   };
+  
 
   return (
     <div className="add-dialog-overlay">

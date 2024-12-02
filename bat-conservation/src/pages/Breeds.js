@@ -8,12 +8,15 @@ const Breeds = () => {
   const [showAddDialog, setShowAddDialog] = useState(false);
   const [showEditDialog, setShowEditDialog] = useState(false);
   const [selectedBat, setSelectedBat] = useState(null);
+  const [showInfoModal, setShowInfoModal] = useState(false);
 
   useEffect(() => {
     // Fetch bats on mount
     (async () => {
       try {
-        const response = await axios.get("https://reactproject-obah.onrender.com/api/bats");
+        const response = await axios.get(
+          "https://reactproject-obah.onrender.com/api/bats"
+        );
         setBats(response.data);
       } catch (error) {
         console.error("Error fetching bats:", error);
@@ -25,9 +28,14 @@ const Breeds = () => {
 
   const editBat = async (updatedBat) => {
     try {
-      const response = await axios.put(`https://reactproject-obah.onrender.com/api/bats/${updatedBat._id}`, updatedBat);
+      const response = await axios.put(
+        `https://reactproject-obah.onrender.com/api/bats/${updatedBat._id}`,
+        updatedBat
+      );
       if (response.status === 200) {
-        setBats(bats.map((bat) => (bat._id === updatedBat._id ? updatedBat : bat)));
+        setBats(
+          bats.map((bat) => (bat._id === updatedBat._id ? updatedBat : bat))
+        );
         setShowEditDialog(false);
       }
     } catch (error) {
@@ -37,7 +45,9 @@ const Breeds = () => {
 
   const deleteBat = async (batId) => {
     try {
-      const response = await axios.delete(`https://reactproject-obah.onrender.com/api/bats/${batId}`);
+      const response = await axios.delete(
+        `https://reactproject-obah.onrender.com/api/bats/${batId}`
+      );
       if (response.status === 200) {
         setBats(bats.filter((bat) => bat._id !== batId));
       }
@@ -46,23 +56,88 @@ const Breeds = () => {
     }
   };
 
+  const handleBatClick = (bat) => {
+    setSelectedBat(bat);
+    setShowInfoModal(true);
+  };
+
   return (
     <div id="breeds" style={{ paddingTop: "100px" }}>
       <div className="breeds-gallery">
         {bats.map((bat) => (
           <div key={bat._id} className="breeds-item">
-            <img src={`https://reactproject-obah.onrender.com${bat.img_name}`} alt={bat.name} />
+            <img
+              src={`https://reactproject-obah.onrender.com${bat.img_name}`}
+              alt={bat.name}
+              onClick={() => handleBatClick(bat)}
+            />
             <p>{bat.name}</p>
-            <button onClick={() => { setSelectedBat(bat); setShowEditDialog(true); }}>Edit</button>
-            <button onClick={() => deleteBat(bat._id)}>Delete</button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedBat(bat);
+                setShowEditDialog(true);
+              }}
+            >
+              Edit
+            </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                deleteBat(bat._id);
+              }}
+            >
+              Delete
+            </button>
           </div>
         ))}
       </div>
       <div className="add-bat-container">
-        <button id="add-bat" onClick={() => setShowAddDialog(true)}>+</button>
+        <button id="add-bat" onClick={() => setShowAddDialog(true)}>
+          +
+        </button>
       </div>
-      {showAddDialog && <AddDialog addBat={addBat} closeDialog={() => setShowAddDialog(false)} />}
-      {showEditDialog && <AddDialog bat={selectedBat} editBat={editBat} closeDialog={() => setShowEditDialog(false)} />}
+      {showAddDialog && (
+        <AddDialog
+          addBat={addBat}
+          closeDialog={() => setShowAddDialog(false)}
+        />
+      )}
+      {showEditDialog && (
+        <AddDialog
+          bat={selectedBat}
+          editBat={editBat}
+          closeDialog={() => setShowEditDialog(false)}
+        />
+      )}
+      {showInfoModal && selectedBat && (
+        <div className="info-modal">
+          <div className="info-modal-content">
+            <span
+              className="close"
+              onClick={() => setShowInfoModal(false)}
+            >
+              &times;
+            </span>
+            <h2>{selectedBat.name}</h2>
+            <img
+              src={`https://reactproject-obah.onrender.com${selectedBat.img_name}`}
+              alt={selectedBat.name}
+            />
+            <p>
+              <strong>Conservation Status:</strong>{" "}
+              {selectedBat.conservationStatus}
+            </p>
+            <p>
+              <strong>Notable Features:</strong> {selectedBat.notable}
+            </p>
+            <p>
+              <strong>Countries Found In:</strong>{" "}
+              {selectedBat.countries.join(", ")}
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
