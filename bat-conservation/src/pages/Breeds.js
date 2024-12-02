@@ -27,14 +27,13 @@ const Breeds = () => {
 
   const editBat = async (updatedBat) => {
     try {
-      // Ensure the ID is sent as an integer
       const response = await axios.put(
         `https://reactproject-obah.onrender.com/api/bats/${updatedBat._id}`,
         updatedBat
       );
   
       if (response.status === 200 && response.data.success) {
-        // Use the updated bat data from the server response
+        // Update the local state with the updated bat
         setBats((prevBats) =>
           prevBats.map((bat) =>
             bat._id === updatedBat._id ? response.data.updatedBat : bat
@@ -46,13 +45,13 @@ const Breeds = () => {
       }
     } catch (error) {
       if (error.response && error.response.status === 400) {
-        // Display server-side validation error
         console.error("Validation error:", error.response.data.message);
       } else {
         console.error("Error editing bat:", error);
       }
     }
   };
+  
   
 
   const deleteBat = async (batId) => {
@@ -122,30 +121,29 @@ const Breeds = () => {
         />
       )}
       {selectedBat && (
-        <div className="modal-overlay" onClick={() => setSelectedBat(null)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <span className="close" onClick={() => setSelectedBat(null)}>
-              &times;
-            </span>
-            <h2>{selectedBat.name}</h2>
-            <img
-              src={`https://reactproject-obah.onrender.com${selectedBat.img_name}`}
-              alt={selectedBat.name}
-            />
-            <p>
-              <strong>Conservation Status:</strong>{" "}
-              {selectedBat.conservationStatus}
-            </p>
-            <p>
-              <strong>Notable Features:</strong> {selectedBat.notable}
-            </p>
-            <p>
-              <strong>Countries Found In:</strong>{" "}
-              {selectedBat.countries}
-            </p>
-          </div>
-        </div>
-      )}
+  <div className="modal-overlay" onClick={() => setSelectedBat(null)}>
+    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <span className="close" onClick={() => setSelectedBat(null)}>
+        &times;
+      </span>
+      <h2>{selectedBat.name}</h2>
+      <img
+        src={`https://reactproject-obah.onrender.com${selectedBat.img_name}`}
+        alt={selectedBat.name}
+      />
+      <p>
+        <strong>Conservation Status:</strong> {selectedBat.conservationStatus}
+      </p>
+      <p>
+        <strong>Notable Features:</strong> {selectedBat.notable}
+      </p>
+      <p>
+        <strong>Countries Found In:</strong> {selectedBat.countries}
+      </p>
+    </div>
+  </div>
+  )}
+
     </div>
   );
 };
