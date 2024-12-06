@@ -120,7 +120,7 @@ const populateInitialData = async () => {
 };
 
 // Call the function after connecting to the database
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URI  )
     .then(() => {
         console.log("Connected to MongoDB");
         populateInitialData(); // Populate data here
